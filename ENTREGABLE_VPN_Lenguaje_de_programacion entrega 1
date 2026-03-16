@@ -1,0 +1,626 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/yisedvalencia/Trabajo_VPN_Lenguaje_de_programacion.ipynb/blob/main/ENTREGABLE_VPN_Lenguaje_de_programacion%20entrega%201\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "kEYNI-n-6STn"
+      },
+      "source": [
+        "# Caso práctico: Analista de inversiones\n",
+        "\n",
+        "Imagina que trabajas como **analista financiero** en una empresa de inversión.\n",
+        "\n",
+        "Tu equipo debe decidir en cuál proyecto invertir.\n",
+        "\n",
+        "La empresa solo puede elegir **un proyecto**.\n",
+        "\n",
+        "Tu tarea será usar **Python para analizar la rentabilidad de cada proyecto** utilizando el **Valor Presente Neto (VPN)**."
+      ],
+      "id": "kEYNI-n-6STn"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "RsuYXzZDUdWb"
+      },
+      "id": "RsuYXzZDUdWb"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "POglWVde6STq"
+      },
+      "source": [
+        "## ¿Qué es el Valor Presente Neto (VPN)?\n",
+        "\n",
+        "El **Valor Presente Neto (VPN)** permite determinar si un proyecto de inversión es rentable.\n",
+        "\n",
+        "- Si **VPN > 0** → el proyecto genera valor.\n",
+        "- Si **VPN < 0** → el proyecto no es rentable.\n",
+        "\n",
+        "Fórmula:\n",
+        "\n",
+        "$$VPN = \\\\sum \\\n",
+        "rac{Flujo_t}{(1+r)^t} - Inversión\\ Inicial$$"
+      ],
+      "id": "POglWVde6STq"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "J-ZS7u0c6STr"
+      },
+      "source": [
+        "## Proyectos de inversión\n",
+        "\n",
+        "Usaremos **diccionarios en Python** para representar cada proyecto."
+      ],
+      "id": "J-ZS7u0c6STr"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "9PNSKFtd6STr"
+      },
+      "outputs": [],
+      "source": [
+        "proyecto_A = {\n",
+        "    'nombre': 'Proyecto Solar',\n",
+        "    'inversion': 8000,\n",
+        "    'flujos': [2500, 3000, 3500, 4000],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "proyecto_B = {\n",
+        "    'nombre': 'Proyecto Tecnológico',\n",
+        "    'inversion': 10000,\n",
+        "    'flujos': [13000, 13500, 14200, 14500],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "proyecto_C = {\n",
+        "    'nombre': 'Proyecto Logístico',\n",
+        "    'inversion': 7000,\n",
+        "    'flujos': [1800, 2600, 3200, 3800],\n",
+        "    'tasa': 0.10\n",
+        "}"
+      ],
+      "id": "9PNSKFtd6STr"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "5ngD0LLw6STs"
+      },
+      "source": [
+        "## Calcular el VPN usando `for`"
+      ],
+      "id": "5ngD0LLw6STs"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QSlJxEFT6STs",
+        "outputId": "eb6c07bb-16c1-4672-8cab-c5a369f55847"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "VPN del proyecto A: 2113.722\n"
+          ]
+        }
+      ],
+      "source": [
+        "proyecto_A = {\n",
+        "    'nombre': 'Proyecto Solar',\n",
+        "    'inversion': 8000,\n",
+        "    'flujos': [2500, 3000, 3500, 4000],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "vpn = -proyecto_A['inversion']\n",
+        "\n",
+        "for t, flujo in enumerate(proyecto_A['flujos']):\n",
+        "    vpn += flujo / (1 + proyecto_A['tasa'])**(t+1)\n",
+        "\n",
+        "print('VPN del proyecto A:', round(vpn, 3))"
+      ],
+      "id": "QSlJxEFT6STs"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "DvY7hh0t6STs"
+      },
+      "source": [
+        "## Ejercicio\n",
+        "\n",
+        "Calcule el VPN del **Proyecto B** y **Proyecto C**.\n",
+        "Tomando referencia del ejercicio inicial VPN proyecto A, vamos a calcularlo"
+      ],
+      "id": "DvY7hh0t6STs"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### ***SOLUCION PARA PROYECTOS B Y C***"
+      ],
+      "metadata": {
+        "id": "yo8tM1_Gm8F3"
+      },
+      "id": "yo8tM1_Gm8F3"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "VPN de inversion proyecto B"
+      ],
+      "metadata": {
+        "id": "gczwVwODmyTo"
+      },
+      "id": "gczwVwODmyTo"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "e65eb309",
+        "outputId": "7ddbf2f1-e7bb-49f8-80cf-e5ad9f21d1ce"
+      },
+      "source": [
+        "proyecto_B = {\n",
+        "    'nombre': 'Proyecto Tecnológico',\n",
+        "    'inversion': 10000,\n",
+        "    'flujos': [13000, 13500, 14200, 14500],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "vpn_B = -proyecto_B['inversion']\n",
+        "\n",
+        "for t, flujo in enumerate(proyecto_B['flujos']):\n",
+        "    vpn_B += flujo / (1 + proyecto_B['tasa'])**(t+1)\n",
+        "\n",
+        "print('VPN del Proyecto B:', round(vpn_B, 3))"
+      ],
+      "id": "e65eb309",
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "VPN del Proyecto B: 33547.572\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Analisis de rentabilidad para proyecto B"
+      ],
+      "metadata": {
+        "id": "-zTTJNj5mniP"
+      },
+      "id": "-zTTJNj5mniP"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b26d4584",
+        "outputId": "9a4005ab-3564-433d-abae-16ef7efb24af"
+      },
+      "source": [
+        "proyecto_B = {\n",
+        "    'nombre': 'Proyecto Tecnológico',\n",
+        "    'inversion': 10000,\n",
+        "    'flujos': [13000, 13500, 14200, 14500],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "vpn_B = -proyecto_B['inversion']\n",
+        "\n",
+        "for t, flujo in enumerate(proyecto_B['flujos']):\n",
+        "    vpn_B += flujo / (1 + proyecto_B['tasa'])**(t+1)\n",
+        "\n",
+        "if vpn_B > 0:\n",
+        "    print('El Proyecto B es rentable')\n",
+        "else:\n",
+        "    print('El Proyecto B no es rentable')"
+      ],
+      "id": "b26d4584",
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "El Proyecto B es rentable\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "VPN de inversion proyecto C"
+      ],
+      "metadata": {
+        "id": "Ky9U9qM1mryY"
+      },
+      "id": "Ky9U9qM1mryY"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8bd674fd",
+        "outputId": "35e7d542-13ec-4eaa-eb12-28dcb07bdaff"
+      },
+      "source": [
+        "proyecto_C = {\n",
+        "    'nombre': 'Proyecto Logístico',\n",
+        "    'inversion': 7000,\n",
+        "    'flujos': [1800, 2600, 3200, 3800],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "vpn_C = -proyecto_C['inversion']\n",
+        "\n",
+        "for t, flujo in enumerate(proyecto_C['flujos']):\n",
+        "    vpn_C += flujo / (1 + proyecto_C['tasa'])**(t+1)\n",
+        "\n",
+        "print('VPN del Proyecto C:', round(vpn_C, 3))"
+      ],
+      "id": "8bd674fd",
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "VPN del Proyecto C: 1784.782\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Analisis de rentabilidad para proyecto C"
+      ],
+      "metadata": {
+        "id": "WDQqpXtymTFe"
+      },
+      "id": "WDQqpXtymTFe"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bd1e77c1",
+        "outputId": "8bae3107-142c-4691-8af0-fd09738664c8"
+      },
+      "source": [
+        "proyecto_C = {\n",
+        "    'nombre': 'Proyecto Logístico',\n",
+        "    'inversion': 7000,\n",
+        "    'flujos': [1800, 2600, 3200, 3800],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "vpn_C = -proyecto_C['inversion']\n",
+        "\n",
+        "for t, flujo in enumerate(proyecto_C['flujos']):\n",
+        "    vpn_C += flujo / (1 + proyecto_C['tasa'])**(t+1)\n",
+        "\n",
+        "if vpn_C > 0:\n",
+        "    print('El Proyecto C es rentable')\n",
+        "else:\n",
+        "    print('El Proyecto C no es rentable')"
+      ],
+      "id": "bd1e77c1",
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "El Proyecto C es rentable\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3V4JLErT6STt"
+      },
+      "source": [
+        "## Decisión con `if`"
+      ],
+      "id": "3V4JLErT6STt"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RPC_OJv36STt"
+      },
+      "source": [
+        "## Analizar todos los proyectos"
+      ],
+      "id": "RPC_OJv36STt"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "D5SUod3N6STt",
+        "outputId": "c558ae81-513c-4e2e-bf81-a16b6a1938b6"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Proyecto Solar VPN: 2113.72\n",
+            "Proyecto Tecnológico VPN: 33547.57\n",
+            "Proyecto Logístico VPN: 1784.78\n"
+          ]
+        }
+      ],
+      "source": [
+        "proyectos = [proyecto_A, proyecto_B, proyecto_C]\n",
+        "\n",
+        "for proyecto in proyectos:\n",
+        "    vpn = -proyecto['inversion']\n",
+        "\n",
+        "    for t, flujo in enumerate(proyecto['flujos']):\n",
+        "        vpn += flujo / (1 + proyecto['tasa'])**(t+1)\n",
+        "\n",
+        "    print(proyecto['nombre'], 'VPN:', round(vpn, 2))"
+      ],
+      "id": "D5SUod3N6STt"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "0u_hf84d6STu"
+      },
+      "source": [
+        "## Simulación de tasas con `while`"
+      ],
+      "id": "0u_hf84d6STu"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-JnBtAQo6STu",
+        "outputId": "99285c3b-9dc9-4432-ccd7-56844ac14c38"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Tasa: 0.05 VPN: 3416.28\n",
+            "Tasa: 0.1 VPN: 2113.72\n",
+            "Tasa: 0.15000000000000002 VPN: 1030.66\n",
+            "Tasa: 0.2 VPN: 121.14\n"
+          ]
+        }
+      ],
+      "source": [
+        "tasa = 0.05\n",
+        "\n",
+        "while tasa <= 0.20:\n",
+        "    vpn = -proyecto_A['inversion']\n",
+        "\n",
+        "    for t, flujo in enumerate(proyecto_A['flujos']):\n",
+        "        vpn += flujo / (1 + tasa)**(t+1)\n",
+        "\n",
+        "    print('Tasa:', tasa, 'VPN:', round(vpn, 2))\n",
+        "\n",
+        "    tasa += 0.05"
+      ],
+      "id": "-JnBtAQo6STu"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "cdfe2db1",
+        "outputId": "57d4fc2f-dec7-4b55-bffb-f737f6a7a3c8"
+      },
+      "source": [
+        "tasa = 0.05\n",
+        "\n",
+        "while tasa <= 0.20:\n",
+        "    vpn_B_sim = -proyecto_B['inversion']\n",
+        "\n",
+        "    for t, flujo in enumerate(proyecto_B['flujos']):\n",
+        "        vpn_B_sim += flujo / (1 + tasa)**(t+1)\n",
+        "\n",
+        "    print('Tasa:', tasa, 'VPN (Proyecto B):', round(vpn_B_sim, 2))\n",
+        "\n",
+        "    tasa += 0.05"
+      ],
+      "id": "cdfe2db1",
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Tasa: 0.05 VPN (Proyecto B): 38821.53\n",
+            "Tasa: 0.1 VPN (Proyecto B): 33547.57\n",
+            "Tasa: 0.15000000000000002 VPN (Proyecto B): 29139.44\n",
+            "Tasa: 0.2 VPN (Proyecto B): 25418.6\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b33f6924",
+        "outputId": "6ce691b8-084d-414a-e78c-d049abd54989"
+      },
+      "source": [
+        "tasa = 0.05\n",
+        "\n",
+        "while tasa <= 0.20:\n",
+        "    vpn_C_sim = -proyecto_C['inversion']\n",
+        "\n",
+        "    for t, flujo in enumerate(proyecto_C['flujos']):\n",
+        "        vpn_C_sim += flujo / (1 + tasa)**(t+1)\n",
+        "\n",
+        "    print('Tasa:', tasa, 'VPN (Proyecto C):', round(vpn_C_sim, 2))\n",
+        "\n",
+        "    tasa += 0.05"
+      ],
+      "id": "b33f6924",
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Tasa: 0.05 VPN (Proyecto C): 2963.11\n",
+            "Tasa: 0.1 VPN (Proyecto C): 1784.78\n",
+            "Tasa: 0.15000000000000002 VPN (Proyecto C): 807.91\n",
+            "Tasa: 0.2 VPN (Proyecto C): -10.03\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "new_cell_2",
+        "outputId": "88e47cf5-b336-4a1c-81e4-c46530f74f03"
+      },
+      "source": [
+        "proyecto_A = {\n",
+        "    'nombre': 'Proyecto Solar',\n",
+        "    'inversion': 8000,\n",
+        "    'flujos': [2500, 3000, 3500, 4000],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "proyecto_B = {\n",
+        "    'nombre': 'Proyecto Tecnológico',\n",
+        "    'inversion': 10000,\n",
+        "    'flujos': [13000, 13500, 14200, 14500],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "proyecto_C = {\n",
+        "    'nombre': 'Proyecto Logístico',\n",
+        "    'inversion': 7000,\n",
+        "    'flujos': [1800, 2600, 3200, 3800],\n",
+        "    'tasa': 0.10\n",
+        "}\n",
+        "\n",
+        "proyectos = [proyecto_A, proyecto_B, proyecto_C]\n",
+        "vpn_proyectos = {}\n",
+        "\n",
+        "for proyecto in proyectos:\n",
+        "    vpn = -proyecto['inversion']\n",
+        "    for t, flujo in enumerate(proyecto['flujos']):\n",
+        "        vpn += flujo / (1 + proyecto['tasa'])**(t+1)\n",
+        "    vpn_proyectos[proyecto['nombre']] = vpn\n",
+        "\n",
+        "print('--- Resumen de Rentabilidad de Proyectos ---')\n",
+        "for nombre_proyecto, vpn_valor in vpn_proyectos.items():\n",
+        "    rentabilidad = 'Rentable' if vpn_valor > 0 else 'No rentable'\n",
+        "    print(f\"  {nombre_proyecto}: VPN = {round(vpn_valor, 2)} ({rentabilidad})\")"
+      ],
+      "id": "new_cell_2",
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "--- Resumen de Rentabilidad de Proyectos ---\n",
+            "  Proyecto Solar: VPN = 2113.72 (Rentable)\n",
+            "  Proyecto Tecnológico: VPN = 33547.57 (Rentable)\n",
+            "  Proyecto Logístico: VPN = 1784.78 (Rentable)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "vDtiojdZ6STu"
+      },
+      "source": [
+        "## Reto final\n",
+        "\n",
+        "1. Calcule el VPN de los tres proyectos.\n",
+        "2. Determine cuál proyecto tiene el **VPN más alto**.\n",
+        "3. Justifique la decisión.\n",
+        "\n",
+        "Según los cálculos de VPN, el proyecto con mayor rentabilidad es el **Proyecto Tecnológico** con un VPN de 33547.57. Esto indica que es el proyecto que genera más valor para la empresa y, por lo tanto, la mejor opción de inversión. Tanto el Proyecto Solar como el Proyecto Logístico también son rentables, pero en menor medida."
+      ],
+      "id": "vDtiojdZ6STu"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
